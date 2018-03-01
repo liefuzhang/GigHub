@@ -13,6 +13,10 @@ namespace GigHub.Controllers {
             _context = new ApplicationDbContext();
         }
 
+        protected override void Dispose(bool disposing) {
+            _context.Dispose();
+        }
+
         [Authorize]
         public ActionResult Create() {
             var viewModel = new GigFormViewModel {

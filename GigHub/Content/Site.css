@@ -80,12 +80,17 @@ body, h1, h2, h3, h4, h5, h6,
     border-radius: 9px;
 }
 
-    .form-control:focus {
-        border-color: #2196f3;
-        -webkit-box-shadow: none;
-        -ms-box-shadow: none;
-        box-shadow: none;
-    }
+select.form-control {
+    padding: 6px 15px;
+    height: 42px;
+}
+
+.form-control:focus {
+    border-color: #2196f3;
+    -webkit-box-shadow: none;
+    -ms-box-shadow: none;
+    box-shadow: none;
+}
 
 .btn {
     font-size: 17px;
