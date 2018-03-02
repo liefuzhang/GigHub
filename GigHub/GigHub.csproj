@@ -200,9 +200,18 @@
     <Compile Include="Migrations\201803012240551_AddNameToApplicationUser.Designer.cs">
       <DependentUpon>201803012240551_AddNameToApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803020150017_AddAttendance.cs" />
+    <Compile Include="Migrations\201803020150017_AddAttendance.Designer.cs">
+      <DependentUpon>201803020150017_AddAttendance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803020208091_AddAttendanceModified.cs" />
+    <Compile Include="Migrations\201803020208091_AddAttendanceModified.Designer.cs">
+      <DependentUpon>201803020208091_AddAttendanceModified.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\Attendance.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Gig.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -302,6 +311,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803012240551_AddNameToApplicationUser.resx">
       <DependentUpon>201803012240551_AddNameToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803020150017_AddAttendance.resx">
+      <DependentUpon>201803020150017_AddAttendance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803020208091_AddAttendanceModified.resx">
+      <DependentUpon>201803020208091_AddAttendanceModified.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
