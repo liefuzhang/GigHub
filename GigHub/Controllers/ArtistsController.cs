@@ -18,11 +18,34 @@ namespace GigHub.Controllers {
         }
 
         [Authorize]
+        public ActionResult Followings() {
+            var userId = User.Identity.GetUserId();
+            var artists = _context.Followings
+                .Where(f => f.FollowerId == userId)
+                .Select(f => f.Followee)
+                .ToList();
+
+            var viewModel = new ArtistsViewModel {
+                Artists = artists,
+                ShowAction = false,
+                Heading = "Artists I'm Followings"
+            };
+
+            return View("Artists", viewModel);
+        }
+
+        [Authorize]
         public ActionResult Index() {
             var userId = User.Identity.GetUserId();
             var artists = _context.Users.Where(a => a.Id != userId);
 
-            return View(artists);
+            var viewModel = new ArtistsViewModel {
+                Artists = artists,
+                ShowAction = true,
+                Heading = "All Artists"
+            };
+
+            return View("Artists", viewModel);
         }
     }
 }

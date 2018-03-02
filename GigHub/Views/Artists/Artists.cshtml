@@ -1,16 +1,18 @@
-﻿@model IEnumerable<GigHub.Models.ApplicationUser>
+﻿@model GigHub.ViewModels.ArtistsViewModel
 
 @{
     ViewBag.Title = "title";
 }
 
-<h2>Artists</h2>
+<h2>@Model.Heading</h2>
 
-<ul class="artists">
-    @foreach (var artist in Model) {
+<ul class="artists voffset4">
+    @foreach (var artist in Model.Artists) {
         <li>
             @artist.Name
-            <button data-artist-id="@artist.Id" class="btn btn-default btn-sm pull-right js-toggle-follow">Follow ?</button>
+            @if (Model.ShowAction) {
+                <button data-artist-id="@artist.Id" class="btn btn-default btn-sm pull-right js-toggle-follow">Follow ?</button>
+            }
         </li>
     }
 </ul>
@@ -27,7 +29,7 @@
                                 button
                                     .removeClass("btn-default")
                                     .addClass("btn-info")
-                                    .text("Following");
+                                    .text("Followings");
                             })
                             .fail(function () {
                                 alert("Something failed!");

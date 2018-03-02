@@ -83,7 +83,7 @@ window.Modernizr = (function( window, document, undefined ) {
     /*>>prefixes*/
 
     /*>>domprefixes*/
-    // Following spec is to expose vendor-specific style properties as:
+    // Followings spec is to expose vendor-specific style properties as:
     //   elem.style.WebkitBorderRadius
     // and the following would be incorrect:
     //   elem.style.webkitBorderRadius
