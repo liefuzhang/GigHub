@@ -79,15 +79,15 @@ namespace GigHub.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUserRoles", "FollowerId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUserLogins", "FollowerId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUserClaims", "FollowerId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
-            DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
+            DropIndex("dbo.AspNetUserLogins", new[] { "FollowerId" });
+            DropIndex("dbo.AspNetUserClaims", new[] { "FollowerId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
+            DropIndex("dbo.AspNetUserRoles", new[] { "FollowerId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");

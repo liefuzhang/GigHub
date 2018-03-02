@@ -18,6 +18,17 @@ namespace GigHub.Controllers {
         }
 
         [Authorize]
+        public ActionResult Attending() {
+            var userId = User.Identity.GetUserId();
+            var gigs = _context.Attendances
+                .Where(a => a.AttendeeId == userId)
+                .Select(a => a.Gig)
+                .ToList();
+
+            return View(gigs);
+        }
+
+        [Authorize]
         public ActionResult Create() {
             var viewModel = new GigFormViewModel {
                 Genres = _context.Genres.ToList()

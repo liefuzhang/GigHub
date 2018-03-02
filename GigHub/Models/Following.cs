@@ -6,17 +6,17 @@ using System.Linq;
 using System.Web;
 
 namespace GigHub.Models {
-    public class Follow {
-        public ApplicationUser User { get; set; }
+    public class Following {
+        public ApplicationUser Follower { get; set; }
 
-        public ApplicationUser Artist { get; set; }
+        public ApplicationUser Followee { get; set; }
 
         [Key]
         [Column(Order = 1)]
-        public string UserId { get; set; }
+        public string FollowerId { get; set; }
 
         [Key]
         [Column(Order = 2)]
-        public string ArtistId { get; set; }
+        public string FolloweeId { get; set; }
     }
 }

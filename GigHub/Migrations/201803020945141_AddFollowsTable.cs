@@ -8,7 +8,7 @@ namespace GigHub.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.Follows",
+                "dbo.Followings",
                 c => new
                     {
                         UserId = c.Byte(nullable: false),
@@ -26,11 +26,11 @@ namespace GigHub.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Follows", "User_Id", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Follows", "Artist_Id", "dbo.AspNetUsers");
-            DropIndex("dbo.Follows", new[] { "User_Id" });
-            DropIndex("dbo.Follows", new[] { "Artist_Id" });
-            DropTable("dbo.Follows");
+            DropForeignKey("dbo.Followings", "User_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Followings", "Artist_Id", "dbo.AspNetUsers");
+            DropIndex("dbo.Followings", new[] { "User_Id" });
+            DropIndex("dbo.Followings", new[] { "Artist_Id" });
+            DropTable("dbo.Followings");
         }
     }
 }

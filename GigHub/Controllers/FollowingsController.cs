@@ -10,10 +10,10 @@ using Microsoft.AspNet.Identity;
 
 namespace GigHub.Controllers {
     [Authorize]
-    public class FollowsController : ApiController {
+    public class FollowingsController : ApiController {
         private readonly ApplicationDbContext _context;
 
-        public FollowsController() {
+        public FollowingsController() {
             _context = new ApplicationDbContext();
         }
 
@@ -22,14 +22,14 @@ namespace GigHub.Controllers {
             var userId = User.Identity.GetUserId();
 
             if (_context.Follows.Any(
-                    f => f.ArtistId == dto.ArtistId
-                     && f.UserId == userId)) {
+                    f => f.FolloweeId == dto.ArtistId
+                     && f.FollowerId == userId)) {
                 return BadRequest("You've already followed this artist.");
             }
 
-            var follow = new Follow {
-                ArtistId = dto.ArtistId,
-                UserId = userId
+            var follow = new Following {
+                FolloweeId = dto.ArtistId,
+                FollowerId = userId
             };
 
             _context.Follows.Add(follow);

@@ -183,7 +183,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\FollowsController.cs" />
+    <Compile Include="Controllers\FollowingsController.cs" />
     <Compile Include="Controllers\AttendancesController.cs" />
     <Compile Include="Controllers\ArtistsController.cs" />
     <Compile Include="Controllers\GigsController.cs" />
@@ -234,11 +234,23 @@
     <Compile Include="Migrations\201803021010242_ModifyFollowsTableColumnType.Designer.cs">
       <DependentUpon>201803021010242_ModifyFollowsTableColumnType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803022142014_RenameFollowsTableToFollowings.cs" />
+    <Compile Include="Migrations\201803022142014_RenameFollowsTableToFollowings.Designer.cs">
+      <DependentUpon>201803022142014_RenameFollowsTableToFollowings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803022154553_RenameFollowingTableColumnNames.cs" />
+    <Compile Include="Migrations\201803022154553_RenameFollowingTableColumnNames.Designer.cs">
+      <DependentUpon>201803022154553_RenameFollowingTableColumnNames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803022219107_AddConfigurationsToFollowingsTable.cs" />
+    <Compile Include="Migrations\201803022219107_AddConfigurationsToFollowingsTable.Designer.cs">
+      <DependentUpon>201803022219107_AddConfigurationsToFollowingsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Attendance.cs" />
-    <Compile Include="Models\Follow.cs" />
+    <Compile Include="Models\Following.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Gig.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -308,6 +320,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <None Include="Views\Artists\Index.cshtml" />
+    <Content Include="Views\Gigs\Attending.cshtml" />
     <None Include="Views\Gigs\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -351,6 +364,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803021010242_ModifyFollowsTableColumnType.resx">
       <DependentUpon>201803021010242_ModifyFollowsTableColumnType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803022142014_RenameFollowsTableToFollowings.resx">
+      <DependentUpon>201803022142014_RenameFollowsTableToFollowings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803022154553_RenameFollowingTableColumnNames.resx">
+      <DependentUpon>201803022154553_RenameFollowingTableColumnNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803022219107_AddConfigurationsToFollowingsTable.resx">
+      <DependentUpon>201803022219107_AddConfigurationsToFollowingsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
