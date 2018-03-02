@@ -183,10 +183,14 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FollowsController.cs" />
     <Compile Include="Controllers\AttendancesController.cs" />
+    <Compile Include="Controllers\ArtistsController.cs" />
     <Compile Include="Controllers\GigsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Dtos\AttendanceDto.cs" />
+    <Compile Include="Dtos\FollowDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -222,10 +226,19 @@
     <Compile Include="Migrations\201803020208091_AddAttendanceModified.Designer.cs">
       <DependentUpon>201803020208091_AddAttendanceModified.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803020945141_AddFollowsTable.cs" />
+    <Compile Include="Migrations\201803020945141_AddFollowsTable.Designer.cs">
+      <DependentUpon>201803020945141_AddFollowsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803021010242_ModifyFollowsTableColumnType.cs" />
+    <Compile Include="Migrations\201803021010242_ModifyFollowsTableColumnType.Designer.cs">
+      <DependentUpon>201803021010242_ModifyFollowsTableColumnType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Attendance.cs" />
+    <Compile Include="Models\Follow.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Gig.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -294,6 +307,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <None Include="Views\Artists\Index.cshtml" />
     <None Include="Views\Gigs\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -331,6 +345,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803020208091_AddAttendanceModified.resx">
       <DependentUpon>201803020208091_AddAttendanceModified.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803020945141_AddFollowsTable.resx">
+      <DependentUpon>201803020945141_AddFollowsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803021010242_ModifyFollowsTableColumnType.resx">
+      <DependentUpon>201803021010242_ModifyFollowsTableColumnType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

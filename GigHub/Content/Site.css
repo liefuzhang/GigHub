@@ -93,8 +93,6 @@ select.form-control {
 }
 
 .btn {
-    font-size: 17px;
-    padding: 7px 20px;
     -ms-border-radius: 9px;
     border-radius: 9px;
 }
@@ -142,6 +140,7 @@ select.form-control {
             position: absolute;
             top: 0;
             left: 70px;
+            width: 120px;
         }
 
             .gigs > li .details .artist {
@@ -151,4 +150,14 @@ select.form-control {
 
             .gigs > li .details .genre {
                 font-size: 15px;
+            }
+
+            .artists {
+                list-style: none;
+                padding-top: 10px;
+                width: 250px;
+            }
+
+            .artists > li {
+                margin: 20px 0;
             }
