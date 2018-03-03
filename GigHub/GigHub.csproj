@@ -323,6 +323,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <None Include="Views\Artists\Artists.cshtml" />
     <None Include="Views\Gigs\Create.cshtml" />
+    <Content Include="Views\Gigs\Mine.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
