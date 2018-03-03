@@ -29,12 +29,29 @@ span.field-validation-error {
     font-weight: bold;
 }
 
-.voffset { margin-top: 2px;}
-.voffset1 { margin-top: 5px;}
-.voffset2 { margin-top: 10px;}
-.voffset3 { margin-top: 20px;}
-.voffset4 { margin-top: 40px;}
-.voffset5 { margin-top: 80px;}
+.voffset {
+    margin-top: 2px;
+}
+
+.voffset1 {
+    margin-top: 5px;
+}
+
+.voffset2 {
+    margin-top: 10px;
+}
+
+.voffset3 {
+    margin-top: 20px;
+}
+
+.voffset4 {
+    margin-top: 40px;
+}
+
+.voffset5 {
+    margin-top: 80px;
+}
 
 
 /* Bootstrap Overrides*/
@@ -82,14 +99,9 @@ body, h1, h2, h3, h4, h5, h6,
 
 .form-control {
     font-size: 17px;
-    padding: 20px 15px;
+    height: 42px;
     -ms-border-radius: 9px;
     border-radius: 9px;
-}
-
-select.form-control {
-    padding: 6px 15px;
-    height: 42px;
 }
 
 .form-control:focus {
@@ -159,11 +171,20 @@ select.form-control {
                 font-size: 15px;
             }
 
-            .artists {
-                list-style: none;
-                width: 250px;
-            }
+.artists {
+    list-style: none;
+    width: 250px;
+}
 
-            .artists > li {
-                margin: 20px 0;
-            }
+    .artists > li {
+        margin: 20px 0;
+    }
+
+.gigs > li .actions {
+    font-size: 15px;
+    display: none;
+}
+
+.gigs > li:hover .actions {
+    display: block;
+}

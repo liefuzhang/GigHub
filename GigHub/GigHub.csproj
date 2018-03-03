@@ -183,6 +183,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\GigsController.cs" />
     <Compile Include="Controllers\FollowingsController.cs" />
     <Compile Include="Controllers\AttendancesController.cs" />
     <Compile Include="Controllers\ArtistsController.cs" />
@@ -245,6 +246,10 @@
     <Compile Include="Migrations\201803022219107_AddConfigurationsToFollowingsTable.cs" />
     <Compile Include="Migrations\201803022219107_AddConfigurationsToFollowingsTable.Designer.cs">
       <DependentUpon>201803022219107_AddConfigurationsToFollowingsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803030432478_AddIsCanceledToGig.cs" />
+    <Compile Include="Migrations\201803030432478_AddIsCanceledToGig.Designer.cs">
+      <DependentUpon>201803030432478_AddIsCanceledToGig.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -322,7 +327,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <None Include="Views\Artists\Artists.cshtml" />
-    <None Include="Views\Gigs\Create.cshtml" />
+    <None Include="Views\Gigs\GigForm.cshtml" />
     <Content Include="Views\Gigs\Mine.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -375,6 +380,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803022219107_AddConfigurationsToFollowingsTable.resx">
       <DependentUpon>201803022219107_AddConfigurationsToFollowingsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803030432478_AddIsCanceledToGig.resx">
+      <DependentUpon>201803030432478_AddIsCanceledToGig.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
