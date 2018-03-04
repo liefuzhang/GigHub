@@ -23,7 +23,9 @@ namespace GigHub.Controllers {
             var userId = User.Identity.GetUserId();
             var gigs = _context.Gigs
                 .Include(g => g.Genre)
-                .Where(g => g.ArtistId == userId && g.DateTime > DateTime.Now)
+                .Where(g => g.ArtistId == userId
+                    && g.DateTime > DateTime.Now
+                    && g.IsCanceled == false)
                 .ToList();
 
             return View(gigs);
@@ -106,7 +108,7 @@ namespace GigHub.Controllers {
             }
 
             var userId = User.Identity.GetUserId();
-            var gig = _context.Gigs.Single(g=>g.Id == viewModel.Id && g.ArtistId == userId);
+            var gig = _context.Gigs.Single(g => g.Id == viewModel.Id && g.ArtistId == userId);
 
             gig.Venue = viewModel.Venue;
             gig.DateTime = viewModel.GetDateTime();
