@@ -1,6 +1,4 @@
-using System.ComponentModel.DataAnnotations;
-
-namespace GigHub.Controllers.Api {
+namespace GigHub.Dtos {
     public class GenreDto {
         public byte Id { get; set; }
         public string Name { get; set; }

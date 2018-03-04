@@ -11,8 +11,6 @@ namespace GigHub.Migrations
             DropIndex("dbo.Followings", new[] { "Artist_Id" });
             DropIndex("dbo.Followings", new[] { "User_Id" });
             DropPrimaryKey("dbo.Followings");
-            DropColumn("dbo.Followings", "FolloweeId");
-            DropColumn("dbo.Followings", "FollowerId");
             RenameColumn(table: "dbo.Followings", name: "Artist_Id", newName: "FolloweeId");
             RenameColumn(table: "dbo.Followings", name: "User_Id", newName: "FollowerId");
             AlterColumn("dbo.Followings", "FollowerId", c => c.String(nullable: false, maxLength: 128));
@@ -37,8 +35,6 @@ namespace GigHub.Migrations
             AlterColumn("dbo.Followings", "FollowerId", c => c.Byte(nullable: false));
             RenameColumn(table: "dbo.Followings", name: "FollowerId", newName: "User_Id");
             RenameColumn(table: "dbo.Followings", name: "FolloweeId", newName: "Artist_Id");
-            AddColumn("dbo.Followings", "FollowerId", c => c.Byte(nullable: false));
-            AddColumn("dbo.Followings", "FolloweeId", c => c.Byte(nullable: false));
             AddPrimaryKey("dbo.Followings", new[] { "FollowerId", "FolloweeId" });
             CreateIndex("dbo.Followings", "User_Id");
             CreateIndex("dbo.Followings", "Artist_Id");
