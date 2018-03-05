@@ -27,7 +27,7 @@
             </div>
             <div class="details">
                 <span class="artist">
-                    @gig.Artist.Name
+                    @Html.ActionLink(gig.Artist.Name, "Details", "Gigs", new { id = gig.Id }, null)
                 </span>
                 <span class="genre">
                     @gig.Genre.Name
