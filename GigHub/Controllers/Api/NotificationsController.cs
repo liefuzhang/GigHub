@@ -12,10 +12,10 @@ using Microsoft.AspNet.Identity;
 
 namespace GigHub.Controllers.Api {
     [Authorize]
-    public class NotificationController : ApiController {
+    public class NotificationsController : ApiController {
         private ApplicationDbContext _context;
 
-        public NotificationController() {
+        public NotificationsController() {
             _context = new ApplicationDbContext();
         }
 

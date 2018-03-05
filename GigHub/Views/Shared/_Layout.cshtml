@@ -42,3 +42,30 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+<script type="text/x-template" id="notifications-template">
+    Hello <%= name %>
+</script>
+
+<script>
+    $(document).ready(function () {
+        $.getJSON("/api/notifications", function (notifications) {
+            $(".js-notifications-count")
+                .text(notifications.length)
+                .removeClass("hide")
+                .addClass("animated bounceInDown");
+        });
+
+        $(".notifications").popover({
+            html: true,
+            title: "Notifications",
+            content: function () {
+                var compiled = _.template($("#notifications-template").html());
+                var html = compiled({ name: "Liefu" });
+
+                return html;
+            },
+            placement: "bottom"
+        });
+    });
+</script>
