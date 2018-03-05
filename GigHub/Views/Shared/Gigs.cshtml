@@ -7,7 +7,7 @@
 @using (Html.BeginForm("Search", "Gigs")) {
     <div class="form-group">
         <div id="searchGigs" class="input-group">
-            @Html.TextBoxFor(m => m.SearchTerm, new { @class = "form-control", placeholder = "Search here" })
+            @Html.TextBoxFor(m => m.SearchTerm, new { @class = "form-control", placeholder = "Search by Artist, Genre or Location..." })
             <span class="input-group-addon" id="basic-addon2">
                 <i class="glyphicon glyphicon-search"></i>
             </span>
@@ -35,7 +35,10 @@
                 @if (gig.IsCanceled) {
                     <span class="label label-warning">Canceled</span>
                 } else if (Model.ShowAction) {
-                    <button data-gig-id="@gig.Id" class="btn btn-default btn-sm pull-right js-toggle-attendance">Going ?</button>
+                    <button data-gig-id="@gig.Id"
+                            class="btn @(Model.Attendances.Contains(gig.Id) ? "btn-info":"btn-default") btn-sm pull-right js-toggle-attendance">
+                        Going ?
+                    </button>
                 }
             </div>
         </li>
@@ -46,20 +49,7 @@
     <script>
         $(document)
             .ready(function () {
-                $(".js-toggle-attendance")
-                    .click(function (e) {
-                        var button = $(e.target);
-                        $.post("/api/attendances", { "GigId": button.attr("data-gig-id") })
-                            .done(function () {
-                                button
-                                    .removeClass("btn-default")
-                                    .addClass("btn-info")
-                                    .text("Going");
-                            })
-                            .fail(function () {
-                                alert("Something failed!");
-                            });
-                    });
+                initGigs();
             });
     </script>
 }

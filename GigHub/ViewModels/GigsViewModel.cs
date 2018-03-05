@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using GigHub.Models;
 
 namespace GigHub.ViewModels {
@@ -7,5 +8,6 @@ namespace GigHub.ViewModels {
         public bool ShowAction { get; set; }
         public string Heading { get; set; }
         public string SearchTerm { get; set; }
+        public ILookup<int, Attendance> Attendances { get; set; }
     }
 }
