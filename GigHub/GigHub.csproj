@@ -266,10 +266,6 @@
     <Compile Include="Migrations\201803040001561_AddNotification.Designer.cs">
       <DependentUpon>201803040001561_AddNotification.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803042026173_DropFollowingTableTwoColumns.cs" />
-    <Compile Include="Migrations\201803042026173_DropFollowingTableTwoColumns.Designer.cs">
-      <DependentUpon>201803042026173_DropFollowingTableTwoColumns.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -422,9 +418,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803040001561_AddNotification.resx">
       <DependentUpon>201803040001561_AddNotification.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803042026173_DropFollowingTableTwoColumns.resx">
-      <DependentUpon>201803042026173_DropFollowingTableTwoColumns.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

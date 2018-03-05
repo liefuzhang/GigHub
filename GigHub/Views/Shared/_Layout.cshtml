@@ -48,7 +48,7 @@
         _.each(notifications, function(notification) {
             if (notification.notificationType == 1) { %>
                 <li><span class="highlight"><%= notification.gig.artist.name %></span> has canceled the gig
-                    at <%= notification.gig.venue %> at <% moment(notification.gig.dateTime).format("D MMM HH:mm") %></li>
+                    at <%= notification.gig.venue %> at <%= moment(notification.gig.dateTime).format("D MMM HH:mm") %></li>
             <% } else if (notification.notificationType == 2) { 
                 var changes = [], originalValues = [], newValues = [];
                 if (notification.originalVenue != notification.gig.venue) {
@@ -73,7 +73,7 @@
 <script>
     $(document).ready(function () {
         $.getJSON("/api/notifications", function (notifications) {
-            if (notifications.length == 0)
+            if (notifications.length === 0)
                 return;
 
             $(".js-notifications-count")
@@ -89,19 +89,14 @@
                     return compiled({ notifications: notifications });
                 },
                 placement: "bottom",
-                template:
-                    '<div class="popover popover-notifications" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+                template: '<div class="popover popover-notifications" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
             }).on('shown.bs.popover', function () {
-                var notificationIds = notifications.map(function(notification) {
-                    return notification.id;
-                });
-
                 $.ajax({
                     url: "/api/notifications",
-                    method: "PUT",
-                    data: { "": notificationIds }
+                    method: "PUT"
                 }).done(function() {
                     $(".js-notifications-count")
+                        .text("")
                         .addClass("hide");
                 });
             });

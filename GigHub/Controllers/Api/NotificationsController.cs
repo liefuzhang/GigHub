@@ -31,15 +31,13 @@ namespace GigHub.Controllers.Api {
         }
 
         [HttpPut]
-        public IHttpActionResult MarkNotificationAsRead([FromBody] int[] ids) {
+        public IHttpActionResult MarkNotificationAsRead() {
             var userId = User.Identity.GetUserId();
             var userNotifications = _context.UserNotifications
-                .Where(un => un.UserId == userId && ids.Contains(un.NotificationId))
+                .Where(un => un.UserId == userId && un.IsRead == false)
                 .ToList();
 
-            foreach (var userNotification in userNotifications) {
-                userNotification.Read();
-            }
+            userNotifications.ForEach(un => un.Read());
 
             _context.SaveChanges();
 

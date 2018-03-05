@@ -114,11 +114,15 @@ namespace GigHub.Controllers {
                 .Single(g => g.Id == viewModel.Id && g.ArtistId == userId);
 
             gig.Update(gig.DateTime, gig.Venue, gig.GenreId);
-            
+
             _context.SaveChanges();
 
             return RedirectToAction("Mine", "Gigs");
         }
 
+        [HttpPost]
+        public ActionResult Search(GigsViewModel viewModel) {
+            return RedirectToAction("Index", "Home", new { query = viewModel.SearchTerm });
+        }
     }
 }
