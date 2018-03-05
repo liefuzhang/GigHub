@@ -32,6 +32,10 @@ namespace GigHub.Models {
         [Column(Order = 2)]
         public int NotificationId { get; private set; }
 
-        public bool IsRead { get; set; }
+        public bool IsRead { get; private set; }
+
+        public void Read() {
+            IsRead = true;
+        }
     }
 }

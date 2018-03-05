@@ -19,7 +19,7 @@ namespace GigHub.Models {
             if (gig == null) {
                 throw new ArgumentNullException(nameof(gig));
             }
-            
+
             Gig = gig;
             NotificationType = type;
             DateTime = DateTime.Now;
@@ -41,7 +41,7 @@ namespace GigHub.Models {
                 OriginalVenue = originalVenue
             };
 
-            return notification;;
+            return notification;
         }
     }
 }
