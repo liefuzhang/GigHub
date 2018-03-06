@@ -4,14 +4,13 @@
     ViewBag.Title = "Details";
 }
 
-<h2>
+<h2 id="artistHeader">
     @Model.Gig.Artist.Name
     @if (Model.ShowAction) {
-        if (!Model.IsFollowing) {
-            <button data-artist-id="@Model.Gig.ArtistId" class="btn btn-default btn-sm js-toggle-follow">Follow ?</button>
-        } else {
-            <button class="btn btn-info btn-sm">Following</button>
-        }
+        <button data-artist-id="@Model.Gig.ArtistId"
+                class="btn @(Model.IsFollowing? "btn-info" : "btn-default") btn-sm js-toggle-follow">
+            @(Model.IsFollowing ? "Following" : "Follow ?")
+        </button>
     }
 </h2>
 
@@ -25,20 +24,7 @@
     <script>
         $(document)
             .ready(function () {
-                $(".js-toggle-follow")
-                    .click(function (e) {
-                        var button = $(e.target);
-                        $.post("/api/followings", { "ArtistId": button.attr("data-artist-id") })
-                            .done(function () {
-                                button
-                                    .removeClass("btn-default")
-                                    .addClass("btn-info")
-                                    .text("Following");
-                            })
-                            .fail(function () {
-                                alert("Something failed!");
-                            });
-                    });
+                FollowingsController.init("#artistHeader");
             });
     </script>
 }

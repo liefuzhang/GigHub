@@ -6,8 +6,10 @@ namespace GigHub {
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles) {
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
-                        "~Scripts/app/services/attendanceService.js",
-                        "~Scripts/app/controllers/gigsController.js",
+                        "~/Scripts/app/services/attendanceService.js",
+                        "~/Scripts/app/services/followingsService.js",
+                        "~/Scripts/app/controllers/gigsController.js",
+                        "~/Scripts/app/controllers/followingsController.js",
                         "~/Scripts/app/app.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/lib").Include(

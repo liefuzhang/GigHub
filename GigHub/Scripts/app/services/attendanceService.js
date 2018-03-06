@@ -15,7 +15,7 @@
     }
 
     return {
-        createAttendace: createAttendance,
+        createAttendance: createAttendance,
         deleteAttendance: deleteAttendance
     }
 }();

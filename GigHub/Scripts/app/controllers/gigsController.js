@@ -14,7 +14,7 @@ var GigsController = function (attendanceService) {
         if (button.hasClass("btn-default"))
             attendanceService.createAttendance(gigId, done, fail);
         else
-            deleteAttendance(gigId, done, fail);
+            attendanceService.deleteAttendance(gigId, done, fail);
     };
 
     var fail = function () {
@@ -22,7 +22,7 @@ var GigsController = function (attendanceService) {
     };
 
     var done = function () {
-        var text = (button.text() == "Going") ? "Going?" : "Going";
+        var text = (button.text() == "Going") ? "Going ?" : "Going";
 
         button.toggleClass("btn-info").toggleClass("btn-default").text(text);
     }
