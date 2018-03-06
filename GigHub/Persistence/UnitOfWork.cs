@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using GigHub.Core;
 using GigHub.Core.Models;
-using GigHub.Repos
-using GigHub.Core.Repositories;itories;
+using GigHub.Core.Repositories;
+using GigHub.Persistence.Repositories;
 
 namespace GigHub.Persistence {
     public class UnitOfWork : IUnitOfWork {
