@@ -2,10 +2,11 @@
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using GigHub.Models;
 using System.Data.Entity;
-using GigHub.Repositories;
-using GigHub.ViewModels;
+using GigHub.Core.Models;
+using GigHub.Core.ViewModels;
+using GigHub.Persistence;
+using GigHub.Persistence.Repositories;
 using Microsoft.AspNet.Identity;
 
 namespace GigHub.Controllers {

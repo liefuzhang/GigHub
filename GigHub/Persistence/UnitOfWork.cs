@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using GigHub.Models;
-using GigHub.Repositories;
+using GigHub.Core.Models;
+using GigHub.Repos
+using GigHub.Core.Repositories;itories;
 
 namespace GigHub.Persistence {
-    public class UnitOfWork {
+    public class UnitOfWork : IUnitOfWork {
         private readonly ApplicationDbContext _context;
-        public AttendanceRepository Attendances { get; private set; }
-        public GigRepository Gigs { get; private set; }
-        public GenreRepository Genres { get; private set; }
-        public FollwingRepository Followings { get; private set; }
+        public IAttendanceRepository Attendances { get; private set; }
+        public IGigRepository Gigs { get; private set; }
+        public IGenreRepository Genres { get; private set; }
+        public IFollwingRepository Followings { get; private set; }
 
         public UnitOfWork(ApplicationDbContext context) {
             _context = context;
@@ -23,6 +24,10 @@ namespace GigHub.Persistence {
 
         public void Complete() {
             _context.SaveChanges();
+        }
+
+        public void Dispose() {
+            _context.Dispose();
         }
     }
 }

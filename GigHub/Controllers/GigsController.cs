@@ -2,25 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using GigHub.Models;
-using GigHub.ViewModels;
 using Microsoft.AspNet.Identity;
 using System.Data.Entity;
+using GigHub.Core;
+using GigHub.Core.Models;
+using GigHub.Core.ViewModels;
 using GigHub.Persistence;
-using GigHub.Repositories;
 
 namespace GigHub.Controllers {
     public class GigsController : Controller {
-        private readonly ApplicationDbContext _context;
-        private readonly UnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public GigsController() {
-            _unitOfWork = new UnitOfWork(new ApplicationDbContext());
-            _context = new ApplicationDbContext();
+        public GigsController(IUnitOfWork unitOfWork) {
+            _unitOfWork = unitOfWork;
         }
 
         protected override void Dispose(bool disposing) {
-            _context.Dispose();
+            _unitOfWork.Dispose();
+            base.Dispose(disposing);
         }
 
         [Authorize]
