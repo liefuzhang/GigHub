@@ -47,5 +47,13 @@ namespace GigHub.Persistence.Repositories {
                 .ToList();
         }
 
+        public IEnumerable<Gig> GetUpcomingGigs() {
+            return _context.Gigs
+                .Include(g => g.Genre)
+                .Include(g => g.Artist)
+                .Where(g => g.DateTime > DateTime.Now
+                            && g.IsCanceled == false)
+                .ToList();
+        }
     }
 }
