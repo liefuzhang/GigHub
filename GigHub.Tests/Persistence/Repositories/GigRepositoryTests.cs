@@ -102,7 +102,7 @@ namespace GigHub.Tests.Persistence.Repositories {
             _mockGigs.SetSource(new[] { gig });
             _mockAttendings.SetSource(new[] { attendance });
 
-            var gigs = _repository.GetGigsUserAttending("2");
+            var gigs = _repository.GetGigsUserAttending(attendance.AttendeeId);
 
             gigs.Should().BeEmpty();
         }
@@ -131,19 +131,18 @@ namespace GigHub.Tests.Persistence.Repositories {
         [TestMethod]
         public void GetGigsUserAttending_GigIsForADifferentUser_ShouldNotBeReturned() {
             var gig = new Gig {
-                DateTime = DateTime.Now.AddDays(1),
-                ArtistId = "1"
+                DateTime = DateTime.Now.AddDays(1)
             };
 
             var attendance = new Attendance {
                 Gig = gig,
-                AttendeeId = "3"
+                AttendeeId = "1"
             };
 
             _mockGigs.SetSource(new[] { gig });
             _mockAttendings.SetSource(new[] { attendance });
 
-            var gigs = _repository.GetGigsUserAttending("2");
+            var gigs = _repository.GetGigsUserAttending(attendance.AttendeeId + "-");
 
             gigs.Should().BeEmpty();
         }
@@ -151,19 +150,18 @@ namespace GigHub.Tests.Persistence.Repositories {
         [TestMethod]
         public void GetGigsUserAttending_GigIsForTheGivenUserAndIsInTheFuture_ShouldBeReturned() {
             var gig = new Gig {
-                DateTime = DateTime.Now.AddDays(1),
-                ArtistId = "1"
+                DateTime = DateTime.Now.AddDays(1)
             };
 
             var attendance = new Attendance {
                 Gig = gig,
-                AttendeeId = "2"
+                AttendeeId = "1"
             };
 
             _mockGigs.SetSource(new[] { gig });
             _mockAttendings.SetSource(new[] { attendance });
 
-            var gigs = _repository.GetGigsUserAttending("2");
+            var gigs = _repository.GetGigsUserAttending(attendance.AttendeeId);
 
             gigs.Should().Contain(gig);
         }

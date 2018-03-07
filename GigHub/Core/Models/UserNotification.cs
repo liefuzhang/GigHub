@@ -22,6 +22,8 @@ namespace GigHub.Core.Models {
 
             User = user;
             Notification = notification;
+            UserId = user.Id;
+            NotificationId = notification.Id;
         }
 
         public string UserId { get; private set; }
