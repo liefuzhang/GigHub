@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using AutoMapper;
+using GigHub.Core;
 using GigHub.Core.Dtos;
 using GigHub.Core.Models;
 using GigHub.Persistence;
@@ -14,19 +15,20 @@ using Microsoft.AspNet.Identity;
 namespace GigHub.Controllers.Api {
     [Authorize]
     public class NotificationsController : ApiController {
-        private ApplicationDbContext _context;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public NotificationsController() {
-            _context = new ApplicationDbContext();
+        public NotificationsController(IUnitOfWork unitOfWork) {
+            _unitOfWork = unitOfWork;
+        }
+
+        protected override void Dispose(bool disposing) {
+            _unitOfWork.Dispose();
+            base.Dispose(disposing);
         }
 
         public IEnumerable<NotificationDto> GetNewNotifications() {
             var userId = User.Identity.GetUserId();
-            var notifications = _context.UserNotifications
-                .Where(un => un.UserId == userId && un.IsRead == false)
-                .Select(un => un.Notification)
-                .Include(n => n.Gig.Artist)
-                .ToList();
+            var notifications = _unitOfWork.Notifications.GetNewNotificationByUserId(userId);
 
             return notifications.Select(Mapper.Map<Notification, NotificationDto>);
         }
@@ -34,13 +36,13 @@ namespace GigHub.Controllers.Api {
         [HttpPut]
         public IHttpActionResult MarkNotificationAsRead() {
             var userId = User.Identity.GetUserId();
-            var userNotifications = _context.UserNotifications
-                .Where(un => un.UserId == userId && un.IsRead == false)
-                .ToList();
+            var userNotifications = _unitOfWork.UserNotifications.GetNewUserNotificationByUserId(userId);
 
-            userNotifications.ForEach(un => un.Read());
+            foreach (var userNotification in userNotifications) {
+                userNotification.Read();
+            }
 
-            _context.SaveChanges();
+            _unitOfWork.Complete();
 
             return Ok();
         }
