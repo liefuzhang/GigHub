@@ -118,7 +118,7 @@ namespace GigHub.Controllers {
                 return new HttpUnauthorizedResult();
             }
 
-            gig.Update(gig.DateTime, gig.Venue, gig.GenreId);
+            gig.Update(viewModel.GetDateTime(), viewModel.Venue, viewModel.Genre);
 
             _unitOfWork.Complete();
 
